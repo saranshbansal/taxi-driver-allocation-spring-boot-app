@@ -1,4 +1,4 @@
-package com.mytaxi.domainvalue;
+package com.mytaxi.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;

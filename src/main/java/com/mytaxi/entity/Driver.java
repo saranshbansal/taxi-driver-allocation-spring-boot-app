@@ -1,8 +1,7 @@
-package com.mytaxi.domainobject;
+package com.mytaxi.entity;
 
-import com.mytaxi.domainvalue.GeoCoordinate;
-import com.mytaxi.domainvalue.OnlineStatus;
 import java.time.ZonedDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -13,14 +12,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
+
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.mytaxi.constants.OnlineStatus;
 
 @Entity
 @Table(
     name = "driver",
-    uniqueConstraints = @UniqueConstraint(name = "uc_username", columnNames = {"username"})
-)
-public class DriverDO
+    uniqueConstraints = @UniqueConstraint(name = "uc_username", columnNames = {"username"}))
+public class Driver
 {
 
     @Id
@@ -54,12 +55,13 @@ public class DriverDO
     private OnlineStatus onlineStatus;
 
 
-    private DriverDO()
+    public Driver()
     {
+        super();
     }
 
 
-    public DriverDO(String username, String password)
+    public Driver(String username, String password)
     {
         this.username = username;
         this.password = password;
@@ -128,6 +130,30 @@ public class DriverDO
     {
         this.coordinate = coordinate;
         this.dateCoordinateUpdated = ZonedDateTime.now();
+    }
+
+
+    public ZonedDateTime getDateCreated()
+    {
+        return dateCreated;
+    }
+
+
+    public void setDateCreated(ZonedDateTime dateCreated)
+    {
+        this.dateCreated = dateCreated;
+    }
+
+
+    public void setUsername(String username)
+    {
+        this.username = username;
+    }
+
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
 }
