@@ -14,5 +14,6 @@ public interface DriverRepository extends CrudRepository<Driver, Long>
 {
     Driver findByUsername(final String username);
 
+
     List<Driver> findByOnlineStatus(OnlineStatus onlineStatus);
 }

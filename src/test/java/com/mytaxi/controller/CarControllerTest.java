@@ -31,10 +31,6 @@ import com.mytaxi.dto.CarDTO;
 import com.mytaxi.entity.Car;
 import com.mytaxi.service.CarService;
 
-/**
- * Created by vinodjagwani on 7/15/17.
- */
-
 public class CarControllerTest extends DataManipulationTest
 {
 

@@ -48,7 +48,8 @@ public class CarDTO
         this.licensePlate = licensePlate;
         this.manufacturer = manufacturer;
     }
-    
+
+
     public static CarDTOBuilder newBuilder()
     {
         return new CarDTOBuilder();
