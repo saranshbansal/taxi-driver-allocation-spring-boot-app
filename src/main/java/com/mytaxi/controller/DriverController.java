@@ -105,8 +105,8 @@ public class DriverController
     }
 
 
-    @GetMapping("/search")
-    public List<DriverDTO> findDriversByFilterCriteria(@RequestParam Map<String, String> params)
+    @PostMapping("/search")
+    public List<DriverDTO> findDriversByFilterCriteria(@RequestBody Map<String, String> params)
         throws ConstraintsViolationException, EntityNotFoundException
     {
         return driverService.findDriversByFilterCriteria(params);
