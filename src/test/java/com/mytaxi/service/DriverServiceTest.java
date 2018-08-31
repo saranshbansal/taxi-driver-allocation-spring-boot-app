@@ -30,7 +30,7 @@ public class DriverServiceTest extends DataManipulationTest
     private DriverRepository driverRepository;
 
     @InjectMocks
-    private DriverService driverService;
+    private DriverServiceImpl driverService;
 
 
     @BeforeClass
@@ -45,7 +45,7 @@ public class DriverServiceTest extends DataManipulationTest
     {
         Driver driver = getDriver();
         when(driverRepository.save(any(Driver.class))).thenReturn(driver);
-        driverService.create(any(Driver.class));
+        driverService.create(driver);
         verify(driverRepository, times(1)).save(any(Driver.class));
     }
 

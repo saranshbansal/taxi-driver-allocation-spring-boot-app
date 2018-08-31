@@ -24,6 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mytaxi.DataManipulationTest;
+import com.mytaxi.controller.mapper.DriverMapper;
 import com.mytaxi.dto.DriverDTO;
 import com.mytaxi.entity.Driver;
 import com.mytaxi.service.DriverCarService;
@@ -106,7 +107,8 @@ public class DriverControllerTest extends DataManipulationTest
     @Test
     public void testGetDriver() throws Exception
     {
-        DriverDTO driverData = getDriverDTO();
+        Driver driverData = getDriver();
+        
         doReturn(driverData).when(driverService).find(any(Long.class));
         driverController.getDriver(1L);
         MvcResult result =
@@ -137,8 +139,11 @@ public class DriverControllerTest extends DataManipulationTest
     public void testCreateDriver() throws Exception
     {
         DriverDTO driverData = getDriverDTO();
+        Driver driverDO = DriverMapper.toEntity(driverData);
+        
         String jsonInString = mapper.writeValueAsString(driverData);
-        doReturn(driverData).when(driverService).create(any(Driver.class));
+        doReturn(driverDO).when(driverService).create(any(Driver.class));
+        
         driverController.createDriver(driverData);
         MvcResult result =
             mvc

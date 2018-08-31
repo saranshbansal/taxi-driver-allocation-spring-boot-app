@@ -27,6 +27,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mytaxi.DataManipulationTest;
+import com.mytaxi.controller.mapper.CarMapper;
 import com.mytaxi.dto.CarDTO;
 import com.mytaxi.entity.Car;
 import com.mytaxi.service.CarService;
@@ -63,14 +64,15 @@ public class CarControllerTest extends DataManipulationTest
     public void testGetCar() throws Exception
     {
         CarDTO carData = getCarDTO();
+        Car carDO = CarMapper.toEntity(carData);
 
-        doReturn(carData).when(carService).find(any(Long.class));
+        doReturn(carDO).when(carService).find(any(Long.class));
 
         carController.getCar(1L);
 
         MvcResult result =
             mvc
-                .perform(get("/v1/cars/{carId}", 1))
+                .perform(get("/v1/cars/{carId}", 1L))
                 .andExpect(MockMvcResultMatchers.status().isOk()).andReturn();
 
         final String responseBody = result.getResponse().getContentAsString();
@@ -82,7 +84,7 @@ public class CarControllerTest extends DataManipulationTest
     @Test
     public void getAllCars() throws Exception
     {
-        List<CarDTO> cars = Collections.singletonList(getCarDTO());
+        List<Car> cars = Collections.singletonList(getCar());
         doReturn(cars).when(carService).findAllCars();
         carController.getAllCars();
         MvcResult result =
@@ -98,8 +100,10 @@ public class CarControllerTest extends DataManipulationTest
     public void createCar() throws Exception
     {
         CarDTO carData = getCarDTO();
+        Car carDO = CarMapper.toEntity(carData);
+
         String jsonInString = mapper.writeValueAsString(carData);
-        doReturn(carData).when(carService).create(any(Car.class));
+        doReturn(carDO).when(carService).create(any(Car.class));
         carController.createCar(carData);
         MvcResult result =
             mvc
@@ -108,8 +112,9 @@ public class CarControllerTest extends DataManipulationTest
                         .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
                         .content(jsonInString))
                 .andExpect(MockMvcResultMatchers.status().isCreated()).andReturn();
+
         final String responseBody = result.getResponse().getContentAsString();
-        Assert.assertTrue(responseBody.contains("11.0"));
+        Assert.assertTrue(responseBody.contains("test"));
     }
 
 

@@ -31,7 +31,7 @@ public class DriverCarServiceTest extends DataManipulationTest
     private DriverCarRepository driverCarRepository;
 
     @InjectMocks
-    private DriverCarService driverCarService;
+    private DriverCarServiceImpl driverCarService;
 
 
     @BeforeClass

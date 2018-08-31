@@ -33,7 +33,7 @@ public class CarServiceTest extends DataManipulationTest
     private ManufacturerRepository manufacturerRepository;
 
     @InjectMocks
-    private CarService carService;
+    private CarServiceImpl carService;
 
 
     @BeforeClass
