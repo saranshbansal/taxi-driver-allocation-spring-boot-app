@@ -63,7 +63,7 @@ public class DriverController
 
 
     @DeleteMapping("/{driverId}")
-    public void deleteDriver(@Valid @PathVariable long driverId) throws EntityNotFoundException
+    public void deleteDriver(@PathVariable long driverId) throws EntityNotFoundException
     {
         driverService.delete(driverId);
     }
