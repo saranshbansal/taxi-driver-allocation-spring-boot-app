@@ -1,7 +1,7 @@
-# mytaxi backend applicant test
+## Description
+This application essentially helps to efficiently allocate cars to drivers based on various criterias described below. You can also create/edit more drivers and add more cars in the system.
 
-## Task Description
-You should be able to start the example application by executing com.mytaxi.MytaxiServerApplicantTestApplication, which starts a webserver on port 8080 (http://localhost:8080) and serves SwaggerUI where can inspect and try existing endpoints.
+You should be able to start the application on port 8080 (http://localhost:8080) which serves the SwaggerUI where one can inspect and play with existing endpoints.
 
 The project is based on a small web service which uses the following technologies:
 
@@ -9,10 +9,9 @@ The project is based on a small web service which uses the following technologie
 * Spring MVC with Spring Boot
 * Database H2 (In-Memory)
 * Maven
-* Intellij as IDE is preferred but not mandatory. We do provide code formatter for intellij and eclipse in the etc folder.
 
 
-You should be aware of the following conventions while you are working on this exercise:
+You should be aware of the following conventions while you are working on this app:
 
  * All new entities should have an ID with type of Long and a date_created with type of ZonedDateTime.
  * The architecture of the web service is built with the following components:
@@ -23,12 +22,11 @@ You should be aware of the following conventions while you are working on this e
    * DomainObjects: Functional Objects which might be persisted in the database.
  * TestDrivenDevelopment is a good choice, but it's up to you how you are testing your code.
 
-You should commit into your local git repository and include the commit history into the final result.
 
 ---
 
 
-## Task 1
+## Feature 1
  * Write a new Controller for maintaining cars (CRUD).
    * Decide on your own how the methods should look like.
    * Entity Car: Should have at least the following characteristics: license_plate, seat_count, convertible, rating, engine_type (electric, gas, ...)
@@ -41,13 +39,13 @@ You should commit into your local git repository and include the commit history 
 ---
 
 
-## Task 2
+## Feature 2
 First come first serve: A car can be selected by exactly one ONLINE Driver. If a second driver tries to select a already used car you should throw a CarAlreadyInUseException.
 
 ---
 
 
-## Task 3
+## Feature 3
 Imagine a driver management frontend that is used internally by mytaxi employees to create and edit driver related data. For a new search functionality, we need an endpoint to search for drivers. It should be possible to search for drivers by their attributes (username, online_status) as well as car characteristics (license plate, rating, etc).
 
 * implement a new endpoint for searching or extend an existing one
@@ -57,16 +55,8 @@ Imagine a driver management frontend that is used internally by mytaxi employees
 ---
 
 
-## Task 4 (optional)
-This task is _voluntarily_, if you can't get enough of hacking tech challenges, implement security.
+## Feature 4 (optional)
+This task is _voluntarily_, if you can't get enough of the previous challenges, implement security.
 Secure the API so that authentication is needed to access it. The details are up to you.
 
 ---
-
-
-Good luck!
-❤️ mytaxi
-
-
-
-_NOTE: Please make sure to not submit any personal data with your tests result. Personal data is for example your name, your birth date, email address etc._
